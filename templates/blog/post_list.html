@@ -5,7 +5,6 @@
             <h2><a href="{% url 'post_detail' pk=pot.pk %}"> {{ pot.title }}</a><a class="btn btn-default" href="{% url 'post_edit' pk=pot.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></h2>
             <p>{{ pot.text|linebreaksbr }}</p>
             <p>Published: {{ pot.published_date }}</p>
-
         </div>
     {% endfor %}
 {% endblock content %}
