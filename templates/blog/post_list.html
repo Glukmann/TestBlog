@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Развлекуха</title>
-</head>
-<body>
-<div><h1>Новые посты</h1></div>
-<div>
-    <p>published: 14.06.2014, 12:14</p>
-    <h2><a href="">My first post</a></h2>
-    <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida
-        at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
-        sit amet risus.</p>
-</div>
-</body>
-</html>
+{% extends 'blog/base.html' %}
+{% block content %}
+    {% for pot in posts %}
+        <div>
+            <h2><a href="{% url 'post_detail' pk=pot.pk %}"> {{ pot.title }}</a><a class="btn btn-default" href="{% url 'post_edit' pk=pot.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></h2>
+            <p>{{ pot.text|linebreaksbr }}</p>
+            <p>Published: {{ pot.published_date }}</p>
+
+        </div>
+    {% endfor %}
+{% endblock content %}
